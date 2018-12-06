@@ -19,7 +19,8 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/mgray88/CFATheme"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author       = { "Michael Gray" => "email@address.com" }
-  s.source       = { :git => "https://github.com/mgray88/CFATheme.git", :commit => "627d5d70e3d997b6d35054864ee77615fc9357f9" }
+  s.platform	 = :ios
+  s.source       = { :git => "https://github.com/mgray88/CFATheme.git", :tag => s.version.to_s }
   s.source_files  = "CFAThemeExample/Theme"
 
 end
