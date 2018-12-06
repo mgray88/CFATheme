@@ -9,9 +9,6 @@
 #import "CFAThemeManager.h"
 #import <UIKit/UIKit.h>
 
-#define BRIGHTNESS_DARK_THRESHOLD 0.30
-#define BRIGHTNESS_LIGHT_THRESHOLD 0.40
-
 #define THEME_DEBUG_MODE 0
 
 static NSString *const kForcedThemeDefaultsKey = @"kForcedThemeDefaultsKey";
@@ -27,11 +24,11 @@ NSString *const kThemeChangedKey = @"kThemeChangedKey";
 
 + (instancetype)sharedManager
 {
-    static CFAThemeManager *manager = nil;
-    if (manager == nil)
-    {
+    static CFAThemeManager *manager;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
         manager = [[CFAThemeManager alloc] init];
-    }
+    });
     return manager;
 }
 
@@ -43,11 +40,6 @@ NSString *const kThemeChangedKey = @"kThemeChangedKey";
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(appDidBecomeActive)
                                                      name:UIApplicationDidBecomeActiveNotification
-                                                   object:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(brightnessDidChange:)
-                                                     name:UIScreenBrightnessDidChangeNotification
                                                    object:nil];
         
         [self setCurrentTheme:[self calculateCurrentTheme] animated:NO];
@@ -115,34 +107,45 @@ NSString *const kThemeChangedKey = @"kThemeChangedKey";
         return [self.forcedTheme integerValue];
     }
     
-    CGFloat brightness = [[UIScreen mainScreen] brightness];
-    
-    if (self.currentTheme == CFAThemeLight)
-    {
-        if (brightness <= BRIGHTNESS_DARK_THRESHOLD)
-        {
+    if (self.sunrise && self.sunset) {
+        NSDateComponents *current = [[NSCalendar currentCalendar]
+                                     components:NSCalendarUnitHour|NSCalendarUnitMinute|NSCalendarUnitSecond fromDate:[NSDate date]];
+        
+        NSMutableArray *times = [@[self.sunrise, current, self.sunset] mutableCopy];
+        [times sortUsingComparator:^NSComparisonResult(NSDateComponents *t1, NSDateComponents *t2) {
+            if (t1.hour > t2.hour) {
+                return NSOrderedDescending;
+            }
+            
+            if (t1.hour < t2.hour) {
+                return NSOrderedAscending;
+            }
+            // hour is the same
+            if (t1.minute > t2.minute) {
+                return NSOrderedDescending;
+            }
+            
+            if (t1.minute < t2.minute) {
+                return NSOrderedAscending;
+            }
+            // hour and minute are the same
+            if (t1.second > t2.second) {
+                return NSOrderedDescending;
+            }
+            
+            if (t1.second < t2.second) {
+                return NSOrderedAscending;
+            }
+            return NSOrderedSame;
+        }];
+        if ([times indexOfObject:current] == 1) {
+            return CFAThemeLight;
+        } else {
             return CFAThemeDark;
         }
+    } else {
         return CFAThemeLight;
     }
-    else
-    {
-        if (brightness >= BRIGHTNESS_LIGHT_THRESHOLD)
-        {
-            return CFAThemeLight;
-        }
-        return CFAThemeDark;
-    }
-}
-
-- (void)brightnessDidChange:(NSNotification *)notification
-{
-    UIApplicationState state = [[UIApplication sharedApplication] applicationState];
-    if (state != UIApplicationStateActive && state != UIApplicationStateInactive)
-    {
-        return;
-    }
-    self.currentTheme = [self calculateCurrentTheme];
 }
 
 - (void)appDidBecomeActive

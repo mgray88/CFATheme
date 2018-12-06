@@ -25,4 +25,10 @@ typedef NS_ENUM (NSInteger, CFATheme) {
 
 @property (nonatomic, readonly) CFATheme currentTheme;
 
+/**
+ * Both of the following must be set for auto switching
+ */
+@property (nonatomic) NSDateComponents *sunrise;
+@property (nonatomic) NSDateComponents *sunset;
+
 @end
