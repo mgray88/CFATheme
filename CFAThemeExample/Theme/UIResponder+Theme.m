@@ -60,13 +60,13 @@
 {
     NSAssert([self respondsToSelector:@selector(themeDidChange:)], @"%@ must implement %@", NSStringFromClass(self.class), NSStringFromSelector(@selector(themeDidChange:)));
     
+    [self themeDidChange:CFACurrentTheme];
+    
     __weak typeof(self) weakSelf = self;
     self.themeChangedNotifier = [[CFANotifier alloc] initWithName:kThemeChangedKey object:nil block:^(NSNotification *notification) {
         
         [weakSelf themeDidChange:CFACurrentTheme];
     }];
-    
-    [self themeDidChange:CFACurrentTheme];
 }
 
 - (CFANotifier *)themeChangedNotifier

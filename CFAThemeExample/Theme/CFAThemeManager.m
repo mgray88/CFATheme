@@ -27,11 +27,11 @@ NSString *const kThemeChangedKey = @"kThemeChangedKey";
 
 + (instancetype)sharedManager
 {
-    static CFAThemeManager *manager = nil;
-    if (manager == nil)
-    {
+    static CFAThemeManager *manager;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
         manager = [[CFAThemeManager alloc] init];
-    }
+    });
     return manager;
 }
 
