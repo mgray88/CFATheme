@@ -59,11 +59,11 @@
 
 - (void)themeDidChange:(CFATheme)theme
 {
-    self.view.backgroundColor = [UIColor cfa_day:CFAColorLightGray night:CFAColorDarkGray];
-    
-    self.segmentedControl.tintColor = [UIColor cfa_day:CFAColorDarkGray night:CFAColorLightGray];
-    self.label.textColor = [UIColor cfa_day:CFAColorDarkGray night:CFAColorLightGray];
-    self.noteLabel.textColor = [UIColor cfa_day:CFAColorDarkGray night:CFAColorLightGray];
+//    self.view.backgroundColor = [UIColor cfa_day:CFAColorLightGray night:CFAColorDarkGray];
+//
+//    self.segmentedControl.tintColor = [UIColor cfa_day:CFAColorDarkGray night:CFAColorLightGray];
+//    self.label.textColor = [UIColor cfa_day:CFAColorDarkGray night:CFAColorLightGray];
+//    self.noteLabel.textColor = [UIColor cfa_day:CFAColorDarkGray night:CFAColorLightGray];
     
     [self setNeedsStatusBarAppearanceUpdate];
 }

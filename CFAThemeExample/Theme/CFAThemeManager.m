@@ -80,8 +80,13 @@ NSString *const kThemeChangedKey = @"kThemeChangedKey";
 
 - (void)setForcedTheme:(NSNumber *)forcedTheme
 {
-    [[NSUserDefaults standardUserDefaults] setObject:forcedTheme forKey:kForcedThemeDefaultsKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    if (forcedTheme) {
+        [[NSUserDefaults standardUserDefaults] setObject:forcedTheme forKey:kForcedThemeDefaultsKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    } else {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:kForcedThemeDefaultsKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
     
     self.currentTheme = [self calculateCurrentTheme];
 }

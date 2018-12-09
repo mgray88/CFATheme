@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIColor+CFA.h"
 #import "CFAThemeManager.h"
 
 @protocol UIResponderTheme <NSObject>

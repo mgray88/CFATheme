@@ -13,7 +13,6 @@
 		0DEF1EAB1F3E4DA0000D00CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DEF1EA91F3E4DA0000D00CC /* Main.storyboard */; };
 		0DEF1EAD1F3E4DA0000D00CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DEF1EAC1F3E4DA0000D00CC /* Assets.xcassets */; };
 		0DEF1EB01F3E4DA0000D00CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DEF1EAE1F3E4DA0000D00CC /* LaunchScreen.storyboard */; };
-		0DEF1EBA1F3E4E0F000D00CC /* UIColor+CFA.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEF1EB91F3E4E0F000D00CC /* UIColor+CFA.m */; };
 		0DEF1EBD1F3E4E6C000D00CC /* CFAThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEF1EBC1F3E4E6C000D00CC /* CFAThemeManager.m */; };
 		0DEF1EC01F3E4F99000D00CC /* UIResponder+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEF1EBF1F3E4F99000D00CC /* UIResponder+Theme.m */; };
 /* End PBXBuildFile section */
@@ -29,8 +28,6 @@
 		0DEF1EAC1F3E4DA0000D00CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0DEF1EAF1F3E4DA0000D00CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0DEF1EB11F3E4DA0000D00CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0DEF1EB81F3E4E0F000D00CC /* UIColor+CFA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CFA.h"; sourceTree = "<group>"; };
-		0DEF1EB91F3E4E0F000D00CC /* UIColor+CFA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CFA.m"; sourceTree = "<group>"; };
 		0DEF1EBB1F3E4E6C000D00CC /* CFAThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFAThemeManager.h; sourceTree = "<group>"; };
 		0DEF1EBC1F3E4E6C000D00CC /* CFAThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFAThemeManager.m; sourceTree = "<group>"; };
 		0DEF1EBE1F3E4F99000D00CC /* UIResponder+Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+Theme.h"; sourceTree = "<group>"; };
@@ -92,8 +89,6 @@
 		0DEF1EB71F3E4DF3000D00CC /* Theme */ = {
 			isa = PBXGroup;
 			children = (
-				0DEF1EB81F3E4E0F000D00CC /* UIColor+CFA.h */,
-				0DEF1EB91F3E4E0F000D00CC /* UIColor+CFA.m */,
 				0DEF1EBE1F3E4F99000D00CC /* UIResponder+Theme.h */,
 				0DEF1EBF1F3E4F99000D00CC /* UIResponder+Theme.m */,
 				0DEF1EBB1F3E4E6C000D00CC /* CFAThemeManager.h */,
@@ -178,7 +173,6 @@
 				0DEF1EBD1F3E4E6C000D00CC /* CFAThemeManager.m in Sources */,
 				0DEF1EC01F3E4F99000D00CC /* UIResponder+Theme.m in Sources */,
 				0DEF1EA51F3E4DA0000D00CC /* AppDelegate.m in Sources */,
-				0DEF1EBA1F3E4E0F000D00CC /* UIColor+CFA.m in Sources */,
 				0DEF1EA21F3E4DA0000D00CC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,6 +332,7 @@
 				0DEF1EB61F3E4DA0000D00CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
